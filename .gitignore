@@ -20,9 +20,9 @@ venv/
 *.swo
 
 # Data and Models
-data/
-models/
-!models/class_indices.pkl  # Keep this file
+# data/
+# models/
+# !models/class_indices.pkl  # Keep this file
 
 # Logs and databases
 *.log

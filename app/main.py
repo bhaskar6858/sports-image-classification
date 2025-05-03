@@ -10,6 +10,8 @@ import os
 import json
 import pandas as pd
 from packaging import version
+import gzip
+import shutil
 
 st.set_page_config(
     page_title="Sports Image Classifier",
@@ -34,15 +36,26 @@ def local_css(file_name):
         st.warning(f"CSS file not found: {file_name}")
 
 @st.cache_resource
+@st.cache_resource
 def load_model_and_classes():
-    try:
-        model = load_model('models/best_model.keras')
-        with open('models/class_indices.pkl', 'rb') as f:
-            class_indices = pickle.load(f)
-        return model, class_indices
-    except Exception as e:
-        st.error(f"Error loading model: {str(e)}")
-        st.stop()
+    # 1. First decompress if needed
+    if not os.path.exists("models/best_model.keras"):
+        os.makedirs("models", exist_ok=True)  # Ensure directory exists
+        try:
+            with gzip.open("models/best_model.keras.gz", 'rb') as f_in:
+                with open("models/best_model.keras", 'wb') as f_out:
+                    shutil.copyfileobj(f_in, f_out)
+            st.toast("Model decompressed successfully!", icon="✅")
+        except Exception as e:
+            st.error(f"Decompression failed: {str(e)}")
+            st.stop()
+    
+    # 2. Now load normally
+    model = tf.keras.models.load_model("models/best_model.keras")
+    with open("models/class_indices.pkl", 'rb') as f:
+        class_indices = pickle.load(f)
+    
+    return model, class_indices
 
 def predict_image(model, image, class_indices, img_size=224):
     try:
