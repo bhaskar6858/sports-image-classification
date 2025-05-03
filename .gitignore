@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+*.egg
+venv/
+.venv/
+env/
+
+# Virtual Environment
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data and Models
+data/
+models/
+!models/class_indices.pkl  # Keep this file
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Streamlit
+.streamlit/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+
+*.keras  # Explicitly ignore all Keras models
+.ipynb_checkpoints/
+*.h5  # If using HDF5 model formats
+__pycache__/
