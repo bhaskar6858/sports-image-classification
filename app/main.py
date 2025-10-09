@@ -166,9 +166,7 @@ def main():
             }
             </style>
             <div class='credits'>
-                @Codex of Winterfell<br>
-                Contributors:<br>
-                Bhaskar, Vaibhav, Kartik <br>
+                Engineered by Bhaskar<br>
                 All Rights Reserved
             </div>
             """, unsafe_allow_html=True)
