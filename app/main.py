@@ -167,7 +167,7 @@ def main():
             </style>
             <div class='credits'>
                 Engineered by Bhaskar<br>
-                All Rights Reserved
+                ©2025 All rights reserved.
             </div>
             """, unsafe_allow_html=True)
 
