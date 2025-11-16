@@ -166,7 +166,7 @@ def main():
             }
             </style>
             <div class='credits'>
-                Engineered by Apoorva<br>
+                Engineered by Bhaskar Singh<br>
                 ©2025 All rights reserved.
             </div>
             """, unsafe_allow_html=True)
